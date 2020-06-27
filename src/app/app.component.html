@@ -1,20 +1,30 @@
-<div class="content-login">
-  <div class="logo-cont">
-    <div class="logo-vect"></div>
-    <div class="epik-vect_top"></div>
-    <div class="epik-vect_bottom"></div>
-    <h1 class="powered">Powered by</h1>
-  </div>
+<div *ngIf="!dashb">
+  <app-dashboard></app-dashboard>
+</div>
+<div *ngIf="dashb">
+  <div class="content-login">
+    <div class="logo-cont">
+      <div class="logo-vect"></div>
+      <div class="epik-vect_top"></div>
+      <div class="epik-vect_bottom"></div>
+      <h1 class="powered">Powered by</h1>
+    </div>
   <div class="form-cont">
     <div class="logo-form"></div>
     <div class="form-login">
       <div class="login-b"><p class="login">Inicio de sesión</p></div>
       <div class="msg-b"><p class="msg">Ingrese los datos de usuario y contraseña para acceder a la plataforma.</p></div>
-      <form action="">
-        <input type="text" class="user" placeholder="Usuario">
-        <input type="password" class="password" placeholder="Contraseña">
-        <input type="submit" class="login-button" value="Iniciar sesión">
-      </form>
+      <div class="group">
+          <div class="group-1">
+            <input (keyup)="validButton($event)" type="text" required class="user" [(ngModel)]="usr" autocomplete="false">
+            <label class="anim">Usuario</label>
+          </div>
+          <div class="group-2">
+            <input (keyup)="validButton($event)" type="password" required class="password" minlegth="6" [(ngModel)]="pass" autocomplete="false">
+            <label class="anim">Contraseña</label>
+          </div>          
+        </div>
+        <button name="button" #button disabled type="submit" class="login-button" value="Iniciar sesión" (click)="enviarForm()">Ingresar</button>
+    </div>
   </div>
 </div>
-<app-dashboard></app-dashboard>

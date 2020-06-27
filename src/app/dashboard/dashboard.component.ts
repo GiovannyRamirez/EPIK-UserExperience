@@ -13,10 +13,16 @@ export class DashboardComponent implements OnInit {
   }
 
 datos = [];
-option = "";
+charOpt: boolean = false;
+locOpt: boolean = false;
+epOpt: boolean = false;
 
 // Función Traer Personajes
 callCharacter() {
+  this.datos = [];
+  this.locOpt=false;
+  this.epOpt=false;
+  this.charOpt=true;
   var myInit =  {
     method: 'GET',
     headers: {
@@ -31,11 +37,13 @@ callCharacter() {
     this.datos=myJson.results;
   }).catch((error) => {
   });
-  this.option="character";
-  console.log(this.option);
 }
 // Función Traer Ubicaciones
 callLocations() {
+  this.datos = [];
+  this.charOpt=false;
+  this.epOpt=false;
+  this.locOpt=true;  
   var myInit =  {
     method: 'GET',
     headers: {
@@ -50,11 +58,13 @@ callLocations() {
     this.datos=myJson.results;
   }).catch((error) => {
   });
-  this.option="location";
-  console.log(this.option);
 }
 // Función Traer Episodios
 callEpisodes() {
+  this.datos = [];
+  this.charOpt=false;
+  this.locOpt=false;
+  this.epOpt=true;
   var myInit =  {
     method: 'GET',
     headers: {
@@ -69,8 +79,12 @@ callEpisodes() {
     this.datos=myJson.results;
   }).catch((error) => {
   });
-  this.option="episode";
-  console.log(this.option);
 }
-
+// Limpia Tablas
+clearTable() {
+  this.charOpt=false;
+  this.locOpt=false;
+  this.epOpt=false;
+  this.datos = [];
+}
 }

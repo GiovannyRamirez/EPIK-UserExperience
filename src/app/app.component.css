@@ -56,27 +56,47 @@
     height: 119px;
     background-image: url('../assets/img/img-Login.png');
 }
-.user {
-    position: absolute;
+.group {
+    position:absolute;
     width: 301px;
-    height: 42px;
+    height: 154px;
     top: 318px;
-    right: 124px;
-    border-radius: 12px;
-    border: 1.3px solid #c2c9d3;
-    background: #fff;
+    right: 141px;
+    display:block;
 }
-.password {
-    position: absolute;
+.group-2 {
+    position: relative;
+    top: 28px;
+}
+input {
+    font-family: 'Maven Pro', sans-serif; /* Linkeada de Google Fonts*/
+    font-size: 15px;
+    color: #535861;
+    padding-left: 15px;
+    position: relative;
     width: 301px;
     height: 42px;
-    top: 388px;
-    right: 124px;
     border-radius: 12px;
     border: 1.3px solid #c2c9d3;
     background: #fff;
 }
-::-webkit-input-placeholder { 
+input:focus {
+    outline: none;
+    border-top: none;    
+}
+input:valid {
+    border-top: none;
+}
+input:focus~.anim,
+input:valid~.anim {
+    position: absolute;
+    top: -10px;
+    font-size: 15px;
+    color: #1A85C6;
+}
+.anim {
+    position: absolute;
+    top: 12px;
     padding-left: 15px;
     font-family: 'Maven Pro', sans-serif; /* Linkeada de Google Fonts*/
     font-style: normal;
@@ -84,7 +104,13 @@
     font-weight: 900;
     line-height: 20px;
     letter-spacing: -0.028px;
-    color: #263247;    
+    color: #263247;
+    transition: 0.5s ease all;
+    pointer-events: none;
+}
+.login-button:disabled {
+    border-radius: 24px;
+    background: #ffffff;
 }
 .login-button {
     position: absolute;
@@ -101,6 +127,9 @@
     line-height: 20px;
     letter-spacing: -0.028px;
     color: #263247; 
+}
+.login-button:focus {
+    outline: none;
 }
 .login-b {
     position:absolute;
@@ -141,5 +170,4 @@ td {
     color: #263247;
     text-align: center;    
     border: 1px solid #000;
-
 }

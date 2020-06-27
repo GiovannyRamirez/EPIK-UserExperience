@@ -1,10 +1,12 @@
 <div class="content-dashboard">
     <div class="nav-user">
       <div class="core-logo"></div>
-      <div class="help"></div>
-      <div class="help-location">
-        <p class="help-text">Ayuda</p>
-      </div>
+      <a href="">
+        <div class="help"></div>
+        <div class="help-location">
+          <p class="help-text">Ayuda</p>
+        </div>
+      </a>      
       <div class="user-img"></div>
       <div class="user-location">
         <p class="name-user">Paulo Castro</p>
@@ -26,7 +28,7 @@
         <ul>
           <div class="selected">
             <li class="conf-item">
-                <a>
+                <a href="">
                   <span class="icon-holder">
                     <i class="fa fa-cog"></i>
                   </span>
@@ -36,7 +38,7 @@
           </div>
           <div class="items">
             <li>
-              <a>
+              <a href="">
                 <span class="icon-holder">
                   <i class="fa fa-briefcase"></i>
                 </span>
@@ -46,7 +48,7 @@
           </div>
           <div class="items">
             <li>
-              <a>
+              <a href="">
                 <span class="icon-holder">
                   <i class="fa fa-bar-chart"></i>
                 </span>
@@ -56,7 +58,7 @@
           </div>
           <div class="items">
             <li>
-              <a>
+              <a href="">
                 <span class="icon-holder">
                   <i class="fa fa-usd"></i>
                 </span>
@@ -74,33 +76,60 @@
         <button (click)="callCharacter()" class="btn">Personajes</button>
         <button (click)="callLocations()" class="btn">Ubicaciones</button>
         <button (click)="callEpisodes()" class="btn">Episodios</button>
+        <button (click)="clearTable()" class="btn">Limpiar</button>
         <br><br>
         <!--Tabla Personajes-->
-        <div class="gridStylesChar" ng-grid="gridOptions" *ngFor="let item of datos">
+        <div *ngIf="charOpt">
+          <div>
+            <tr>
+              <th>NOMBRE</th>
+              <th>IMAGEN</th>
+              <th>GÉNERO</th>
+              <th>ESPECIE</th>
+            </tr>
+          </div>
+          <div *ngFor="let item of datos">
             <tr>
                 <td>{{item.name}}</td>
-                <td><img [src]="item.src" alt="">{{item.image}}</td>
+                <td><img class="charImg" src="{{item.image}}" alt=""></td>
                 <td>{{item.gender}}</td>
                 <td>{{item.species}}</td>
             </tr>
+          </div>
         </div>
-        <br>
         <!--Tabla Ubicaciones-->
-        <div class="gridStylesLoc" ng-grid="gridOptions" *ngFor="let item of datos">
+        <div *ngIf="locOpt">
+          <div>
+            <tr>
+              <th>NOMBRE</th>
+              <th>TIPO</th>
+              <th>DIMENSION</th>
+            </tr>
+          </div>
+          <div class="gridStylesLoc" ng-grid="gridOptions" *ngFor="let item of datos">
             <tr>
                 <td>{{item.name}}</td>
                 <td>{{item.type}}</td>
                 <td>{{item.dimension}}</td>
             </tr>
+          </div>
         </div>
-        <br>
         <!--Tabla Episodios-->
-        <div class="gridStylesEp" ng-grid="gridOptions" *ngFor="let item of datos">
+        <div *ngIf="epOpt">
+          <div>
             <tr>
-                <td>{{item.id}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.air_date}}</td>
+              <th>ID</th>
+              <th>NOMBRE</th>
+              <th>FECHA DE ESTRENO</th>
             </tr>
+          </div>
+          <div class="gridStylesEp" ng-grid="gridOptions" *ngFor="let item of datos">
+              <tr>
+                  <td>{{item.id}}</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.air_date}}</td>
+              </tr>
+          </div>
         </div>
       </div>
     </div>
